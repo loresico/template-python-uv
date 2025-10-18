@@ -1,8 +1,6 @@
-# template-python-uv
-template-python-uv
 # Python UV Template (Always Portable) 🚀
 
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/)
 [![UV](https://img.shields.io/badge/uv-enabled-blue)](https://github.com/astral-sh/uv)
 [![Portable](https://img.shields.io/badge/portable-100%25-green)](https://github.com/indygreg/python-build-standalone)
 
@@ -22,7 +20,7 @@ A professional Python project template that **always uses portable Python** - ne
 git clone https://github.com/yourusername/your-project
 cd your-project
 
-# 2. Run setup (downloads Python 3.12.7 first time, ~2 minutes)
+# 2. Run setup (downloads Python 3.13.9 first time, ~2 minutes)
 ./setup-portable.sh
 
 # 3. Activate and run
@@ -36,7 +34,7 @@ That's it! No system Python needed.
 
 ```
 your-project/
-├── .python/              # Portable Python 3.12.7 (~80MB)
+├── .python/              # Portable Python 3.13.9 (~80MB)
 ├── .venv/                # Virtual environment with dependencies
 ├── src/
 │   └── main.py
@@ -96,7 +94,7 @@ cd my-app-1.0.0-portable
 ### With `--force-clean`
 
 1. Deletes `.python/`, `.venv/`, `uv.lock`
-2. Downloads Python again
+2. Downloads Python 3.13.9 again
 3. Fresh installation
 
 ## 💡 Why Portable Python?
@@ -224,13 +222,89 @@ docker save my-app > my-app.tar
 
 ## 🤝 Contributing
 
+### Commit Message Convention
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) for clear and structured commit history.
+
+**Format:**
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Types:**
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, no logic change)
+- `refactor`: Code refactoring (no feature change or bug fix)
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks (dependencies, config)
+- `ci`: CI/CD changes
+
+**Examples:**
+```bash
+feat(setup): add Python 3.14 support
+fix(package): correct tar.gz extraction path
+docs(readme): update installation instructions
+chore(deps): upgrade uv to latest version
+refactor(setup): improve error handling
+```
+
+**Scope (optional):** Component affected (setup, package, docs, etc.)
+
+### Pull Request Process
+
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing`)
-3. Make your changes
-4. Run tests (`pytest`)
-5. Commit (`git commit -m 'Add amazing feature'`)
-6. Push (`git push origin feature/amazing`)
-7. Open Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes with conventional commits
+4. Run tests and linting (`pytest && black --check .`)
+5. Update documentation if needed
+6. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request with:
+   - Clear description of changes
+   - Link to related issues
+   - Screenshots/examples if applicable
+
+### Code Standards
+
+- **Python Code:** Follow PEP 8, use Black formatter
+- **Bash Scripts:** Use ShellCheck for validation
+- **Documentation:** Clear, concise, with examples
+- **Tests:** Add tests for new features
+
+### Before Submitting
+
+```bash
+# Format code
+black src/ tests/
+
+# Run linting
+flake8 src/ tests/
+
+# Run tests
+pytest tests/
+
+# Verify script works
+./setup-portable.sh --force-clean
+```
+
+### Set Up Commit Message Template (Optional)
+
+```bash
+# Use the included commit message template
+git config commit.template .gitmessage
+
+# Now when you commit, you'll see helpful hints
+git commit
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 📄 License
 
