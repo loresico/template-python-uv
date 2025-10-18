@@ -210,7 +210,7 @@ pip install uv --quiet
 # Use UV to install dependencies
 echo "📦 Installing project dependencies with UV..."
 uv lock
-uv sync
+uv sync --all-extras
 
 echo ""
 echo "✅ Setup complete!"
@@ -227,4 +227,10 @@ echo "   source .venv/bin/activate"
 echo ""
 echo "   # Run your application:"
 echo "   python src/main.py"
+echo ""
+echo "   # Run tests with coverage:"
+echo "   pytest --cov=src"
+echo ""
+echo "   # Run tests with coverage report:"
+echo "   pytest --cov=src --cov-report=html"
 echo ""
