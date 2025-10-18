@@ -30,26 +30,40 @@ python src/main.py
 
 That's it! No system Python needed.
 
-## 📁 What Gets Created
+## 📁 Project Structure
 
 ```
 your-project/
-├── .python/              # Portable Python 3.13.9 (~80MB)
-├── .venv/                # Virtual environment with dependencies
+├── .github/
+│   └── workflows/
+│       └── ci.yml            # CI/CD pipeline
+├── .python/                  # Portable Python 3.13.9 (~80MB, gitignored)
+├── .venv/                    # Virtual environment (gitignored)
 ├── src/
+│   ├── __init__.py
 │   └── main.py
-├── setup.sh     # Setup script
-└── pyproject.toml
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   └── test_main.py
+├── .gitignore
+├── .gitmessage               # Commit message template
+├── .python-version           # Python version (3.13)
+├── CONTRIBUTING.md           # Contribution guidelines
+├── pyproject.toml            # Project configuration
+├── README.md
+├── setup-portable.sh         # Setup script
+└── verify-python-version.sh  # Version checker
 ```
 
 ## 🎯 Common Commands
 
 ```bash
 # Setup (first time downloads Python, subsequent runs reuse it)
-./setup-portable.sh
+./setup.sh
 
 # If something breaks, clean rebuild
-./setup-portable.sh --force-clean
+./setup.sh --force-clean
 
 # Add a dependency
 # 1. Edit pyproject.toml
@@ -63,7 +77,7 @@ uv sync
 
 ### First Time
 
-1. Downloads pre-built Python 3.12.7 from [python-build-standalone](https://github.com/indygreg/python-build-standalone)
+1. Downloads pre-built Python 3.13.9 from [python-build-standalone](https://github.com/indygreg/python-build-standalone)
 2. Installs to `.python/` directory
 3. Creates virtual environment in `.venv/`
 4. Installs dependencies with UV
@@ -104,7 +118,7 @@ Small price for complete portability!
 
 ```bash
 # Day 1: Setup
-./setup-portable.sh
+./setup.sh
 source .venv/bin/activate
 
 # Daily development
@@ -116,14 +130,14 @@ pytest
 uv lock && uv sync
 
 # If weird issues
-./setup-portable.sh --force-clean
+./setup.sh --force-clean
 ```
 
 ## 📮 Distribution Workflow
 
 ```bash
 # 1. Ensure clean build
-./setup-portable.sh --force-clean
+./setup.sh --force-clean
 
 # 2. Test your app
 source .venv/bin/activate
@@ -134,9 +148,9 @@ python src/main.py
 
 ### Change Python Version
 
-Edit `setup-portable.sh`:
+Edit `setup.sh`:
 ```bash
-PYTHON_VERSION="3.13.0"  # Or any version
+PYTHON_VERSION="3.14.*"  # Or any version
 ```
 
 Available versions: https://github.com/indygreg/python-build-standalone/releases
@@ -145,10 +159,10 @@ Available versions: https://github.com/indygreg/python-build-standalone/releases
 
 ```bash
 # Virtual environment issues
-rm -rf .venv/ && ./setup-portable.sh
+rm -rf .venv/ && ./setup.sh
 
 # Complete fresh start
-./setup-portable.sh --force-clean
+./setup.sh --force-clean
 
 # Check what you have
 .python/bin/python3 --version
