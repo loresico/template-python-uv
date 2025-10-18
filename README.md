@@ -165,10 +165,10 @@ Available versions: https://github.com/indygreg/python-build-standalone/releases
 
 ### Configure Package
 
-Edit `package-portable.sh`:
-```bash
-APP_NAME="my-app"
-VERSION="1.0.0"
+Edit `pyproject.toml`:
+```toml
+name = "my-app"
+version = "1.0.0"
 ```
 
 ## 🐛 Troubleshooting
