@@ -30,7 +30,7 @@ python src/main.py
 
 That's it! No system Python needed.
 
-## 📁 Project Structure
+## 📁 Project Structure (after the setup)
 
 ```
 your-project/
@@ -44,15 +44,14 @@ your-project/
 │   └── main.py
 ├── tests/
 │   ├── __init__.py
-│   ├── conftest.py
 │   └── test_main.py
 ├── .gitignore
-├── .gitmessage               # Commit message template
-├── .python-version           # Python version (3.13)
 ├── CONTRIBUTING.md           # Contribution guidelines
 ├── pyproject.toml            # Project configuration
 ├── README.md
-├── setup-portable.sh         # Setup script
+├── SETUP_QUICK_REF.md
+├── setup.sh         # Setup script
+├── uv.lock
 └── verify-python-version.sh  # Version checker
 ```
 
