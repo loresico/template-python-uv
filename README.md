@@ -30,7 +30,7 @@ python src/main.py
 
 That's it! No system Python needed.
 
-## 📁 Project Structure (after the setup)
+## 📁 Project Structure (After Setup)
 
 ```
 your-project/
